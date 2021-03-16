@@ -1,0 +1,46 @@
+/*Global Boy*/
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+a:link {
+    text-decoration: none;
+    color: darkturquoise;
+}
+a:visited {
+  color: black;
+}
+a:hover{
+    color: whitesmoke;
+
+}
+a:active{
+    color: yellowgreen;
+
+}
+/* Header*/
+header{
+    position: fixed;
+    width: 100%;
+}
+.header-box{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #999;
+    height: 10vh;
+
+}
+.index-h1{
+    padding: 1rem;
+}
+/* nav */
+.nav{
+    display: flex;
+    justify-content: right;
+
+}
+nav a{
+    margin-right: 3rem;
+}

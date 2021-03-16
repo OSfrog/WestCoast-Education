@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "courseNumber": 1001,
+    "title": "Introduction to C#",
+    "description": "An introduction to C#",
+    "length": 4,
+    "category": "Programming"
+  },
+  {
+    "id": 2,
+    "courseNumber": 1002,
+    "title": "Introduction to JavaScript",
+    "description": "An introduction to JavaScript ",
+    "length": 4,
+    "category": "Programming"
+  },
+  {
+    "id": 3,
+    "courseNumber": 1003,
+    "title": "Introduction to CSS",
+    "description": "An introduction to CSS ",
+    "length": 4,
+    "category": "Programming"
+  },
+  {
+    "id": 4,
+    "courseNumber": 1004,
+    "title": "Introduction to HTML",
+    "description": "An introduction to HTML ",
+    "length": 4,
+    "category": "Programming"
+  },
+  {
+    "id": 5,
+    "courseNumber": 1005,
+  "title": "Introduction to SQL",
+    "description": "An introduction to SQL ",
+    "length": 4,
+    "category": "Programming"
+  }
+]
