@@ -1,0 +1,72 @@
+/* Header*/
+.header-box{
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 18vh;
+    padding: 1rem;
+}
+
+.index-h1{
+    margin: 1rem;
+    margin-left: 0;
+}
+/* nav */
+.nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+}
+nav a{
+    margin: 1rem;
+}
+
+/* landing */
+
+.landing-container {
+    display: flex;
+    flex-wrap: wrap;
+    /* max-width: 790px; */
+    flex-direction: column;
+}
+
+#landing-top {
+    display: flex;
+    flex-direction: column;
+    /* width: 100%; */
+}
+
+#landing-bottom {
+    display: flex;
+}
+
+/* Flex items */
+
+.flex-items {
+    flex-direction: column;
+  }
+  
+/* Text container top */
+
+.text-container-top {
+display: inline-flex;
+flex-direction: column;
+justify-content: center;
+align-items:center;
+padding: 2rem;
+gap: 1rem;
+width: 50%;
+height: 100%;
+}
+
+.text-container-top h2 {
+    padding-right: 0;
+}
+
+.text-container-top p {
+    text-align: center;
+    /* padding: 1rem; */
+    width: 20rem;
+}
