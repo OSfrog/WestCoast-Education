@@ -1,45 +1,41 @@
 /* Header*/
+
+header {
+    min-height: 10vh;
+}
+
 .header-box{
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
-    height: 18vh;
+    height: 100%;
     padding: 1rem;
+    width: 100%;
 }
 
-.index-h1{
-    margin: 1rem;
-    margin-left: 0;
+h1.index-h1 {
+    font-size: 1.5rem;
 }
+
 /* nav */
-.nav {
+nav {
     display: flex;
-    flex-direction: row;
     justify-content: center;
     align-items: center;
-
-}
-nav a{
-    margin: 1rem;
+    width: 100%;
 }
 
 /* landing */
 
 .landing-container {
-    display: flex;
-    flex-wrap: wrap;
-    /* max-width: 790px; */
-    flex-direction: column;
+    min-height: 95vh;
 }
 
-#landing-top {
-    display: flex;
-    flex-direction: column;
-    /* width: 100%; */
-}
+
 
 #landing-bottom {
     display: flex;
+    padding: 10%;
 }
 
 /* Flex items */
@@ -55,18 +51,38 @@ display: inline-flex;
 flex-direction: column;
 justify-content: center;
 align-items:center;
-padding: 2rem;
 gap: 1rem;
-width: 50%;
-height: 100%;
+width: 100%;
 }
 
 .text-container-top h2 {
+    font-size: 1.3rem;
     padding-right: 0;
 }
 
 .text-container-top p {
     text-align: center;
-    /* padding: 1rem; */
-    width: 20rem;
 }
+/* Image container top */
+
+.image-container-top {
+    display: inline-flex;
+    justify-content: center;
+    width: 50%;
+    height: 50%;
+}
+
+/* Buttons */
+
+.header-button {
+    padding: 0.5rem 1rem;
+}
+
+@media screen and (max-width: 350px){
+    @media screen and (max-height: 800px){
+        .landing-container {
+            min-height: 95vh;
+            height: auto;
+        }
+    }
+  }
