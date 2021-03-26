@@ -29,6 +29,7 @@ nav {
 
 .landing-container {
     min-height: 95vh;
+    height: auto;
 }
 
 
@@ -78,11 +79,12 @@ width: 100%;
     padding: 0.5rem 1rem;
 }
 
-@media screen and (max-width: 350px){
+/* @media screen and (max-width: 350px){
     @media screen and (max-height: 800px){
         .landing-container {
             min-height: 95vh;
             height: auto;
         }
     }
-  }
+  } */
+

@@ -1,0 +1,58 @@
+{
+  "courses": [
+    {
+      "id": 1,
+      "courseNumber": 1001,
+      "title": "Introduction to C#",
+      "description": "Learn Microsoft’s popular programming language C#, used to make websites, mobile apps, video games, VR, and more!",
+      "length": 4,
+      "category": "Programming",
+      "image" : "../content/images/mycodeworked.jpg"
+    },
+    {
+      "id": 2,
+      "courseNumber": 1002,
+      "title": "Introduction to JavaScript",
+      "description": "Learn the JavaScript fundamentals you’ll need for front-end or back-end development.",
+      "length": 4,
+      "category": "Programming",
+      "image" : "../content/images/laptops.jpg"
+    },
+    {
+      "id": 3,
+      "courseNumber": 1003,
+      "title": "Introduction to CSS",
+      "description": "Learn how to style and visually organize HTML with CSS. This course covers version 3 of CSS.",
+      "length": 4,
+      "category": "Programming",
+      "image" : "../content/images/laughingdudes.jpg"
+    },
+    {
+      "id": 4,
+      "courseNumber": 1004,
+      "title": "Introduction to HTML",
+      "description": "Learn the basics of HTML5 and start building & editing web pages.",
+      "length": 4,
+      "category": "Programming",
+      "image" : "../content/images/threegirls.jpg"
+    },
+    {
+      "id": 5,
+      "courseNumber": 1005,
+      "title": "Introduction to SQL",
+      "description": "Learn to communicate with databases using SQL, the standard data management language.",
+      "length": 4,
+      "category": "Programming",
+      "image" : "../content/images/mycodeisntworking.jpg"
+    },
+    {
+      "id": 6,
+      "courseNumber": 1006,
+      "title": "Introduction to React",
+      "description": "Build powerful interactive applications with React, a popular JavaScript library.",
+      "length": 3,
+      "category": "Programming",
+      "image" : "../content/images/threedudes.jpg"
+    }
+  ]
+}
