@@ -1,5 +1,28 @@
 /* Buttons */
 
+.btn {
+    font-family: sans-serif;
+    padding: 0.6rem 0.5rem;
+    margin: 1rem auto;
+    text-decoration: none;
+    border-radius: 0.3125rem;
+    color: #fff;
+    background-color: #55acee;
+    box-shadow: 0 0.3125rem 0 0 #3C93D5;
+}
+
+.btn:hover {
+    background-color: #6FC6FF;
+    cursor: pointer;
+  }
+
+  .btn:active {
+    transform: translate(0, 0.3125rem);
+    -webkit-transform: translate(0, 0.3125rem);
+    box-shadow: 0 0.0625rem 0 0;
+  }
+  
+
 .header-button{
     background: rgba(40, 151, 170, 0.979);
     border: none;
@@ -9,6 +32,8 @@
     cursor: pointer;
     font-weight: bold;
 }
+
+/* Flex items */
 
 .flex-items {
     display: flex;

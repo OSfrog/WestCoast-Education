@@ -4,7 +4,7 @@
       "id": 1,
       "courseNumber": 1001,
       "title": "Introduction to C#",
-      "description": "Learn Microsoft’s popular programming language C#, used to make websites, mobile apps, video games, VR, and more!",
+      "description": "Learn Microsoft’s programming language C#, used to make websites, mobile apps, and more!",
       "length": 4,
       "category": "Programming",
       "image" : "../content/images/mycodeworked.jpg"

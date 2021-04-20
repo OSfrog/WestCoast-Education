@@ -10,6 +10,14 @@
     box-sizing: border-box;
 }
 
+button {
+    border: 0;
+}
+
+button:focus {
+    outline: none;
+}
+
 a:link {
     text-decoration: none;
     color: rgb(0, 0, 0);
