@@ -7,7 +7,8 @@
       "description": "Learn Microsoft’s programming language C#, used to make websites, mobile apps, and more!",
       "length": 4,
       "category": "Programming",
-      "image" : "../content/images/mycodeworked.jpg"
+      "image" : "../content/images/mycodeworked.jpg",
+      "price": 999
     },
     {
       "id": 2,
@@ -16,7 +17,8 @@
       "description": "Learn the JavaScript fundamentals you’ll need for front-end or back-end development.",
       "length": 4,
       "category": "Programming",
-      "image" : "../content/images/laptops.jpg"
+      "image" : "../content/images/laptops.jpg",
+      "price": 150
     },
     {
       "id": 3,
@@ -25,7 +27,8 @@
       "description": "Learn how to style and visually organize HTML with CSS. This course covers version 3 of CSS.",
       "length": 4,
       "category": "Programming",
-      "image" : "../content/images/laughingdudes.jpg"
+      "image" : "../content/images/laughingdudes.jpg",
+      "price": 50
     },
     {
       "id": 4,
@@ -34,7 +37,8 @@
       "description": "Learn the basics of HTML5 and start building & editing web pages.",
       "length": 4,
       "category": "Programming",
-      "image" : "../content/images/threegirls.jpg"
+      "image" : "../content/images/threegirls.jpg",
+      "price": 70
     },
     {
       "id": 5,
@@ -43,7 +47,8 @@
       "description": "Learn to communicate with databases using SQL, the standard data management language.",
       "length": 4,
       "category": "Programming",
-      "image" : "../content/images/mycodeisntworking.jpg"
+      "image" : "../content/images/mycodeisntworking.jpg",
+      "price": 333
     },
     {
       "id": 6,
@@ -52,7 +57,8 @@
       "description": "Build powerful interactive applications with React, a popular JavaScript library.",
       "length": 3,
       "category": "Programming",
-      "image" : "../content/images/threedudes.jpg"
+      "image" : "../content/images/threedudes.jpg",
+      "price": 1337
     }
   ]
 }

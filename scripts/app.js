@@ -26,6 +26,7 @@ function getCourses() {
                         <p>Category: ${obj.category}</p>
                         <p>${obj.description}</p>
                         <p>Length: ${obj.length} weeks</p>
+                        <p>\$${obj.price}</p>
                         </div>
                     <button class="btn">Add To Cart</button>
                 </div>

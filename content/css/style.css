@@ -33,10 +33,11 @@ a:active{
 
 a.header-button {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: #fff;
 }
 
 a.header-button:hover{
-    color: whitesmoke;
+    color: black;
 }
 
 .text-container-top a:hover {
