@@ -5,6 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>WestCoast Education</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+      integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+      crossorigin="anonymous"
+    />
     <link rel="stylesheet" href="../content/css/style.css" />
     <link rel="stylesheet" href="../content/css/utilities.css" />
     <link rel="stylesheet" href="../content/css/courses.css" />
@@ -14,7 +20,8 @@
       href="../content/css/mobile.css"
     />
     <script src="../scripts/app.js" defer></script>
-    <script src="../scripts/shoppingcart.js"></script>
+    <script src="../scripts/courses.js" defer></script>
+    <script src="../scripts/shoppingcart.js" defer></script>
   </head>
   <header>
     <div class="header-box">
@@ -30,10 +37,25 @@
   <body>
     <main>
       <div class="main-center-container">
-        <h1 class="header-title">Courses</h1>
+        <h1 class="header-title">Courses <span class="far fa-file-alt" id="addCourse">+</span></h1>
         <div class="main-container"></div>
+        <!-- Modal -->
+        <div class="modal-container hidden" id="addCourseModal">
+          <div class="modal-content">
+            <h2>Add new course <span class="close">&times;</span></h2>
+            <form>
+              <input id="numberInput" type="number" placeholder="Course Number">
+              <input id="titleInput" type="text" placeholder="Course Title">
+              <input id="categoryInput" type="text" placeholder="Course Category">
+              <textarea id="descriptionInput" type="text" rows="6" cols="17" id="description" name="description" placeholder="Description"></textarea>
+              <input id="lengthInput" type="text" placeholder="Course Length">
+              <input id="priceInput" type="number" placeholder="Price">
+              <input id="imageInput" type="text" placeholder="Image URL">
+              <button id="save">Add Course</button>
+            </form>
+          </div>
+        </div>
       </div>
     </main>
-
   </body>
 </html>

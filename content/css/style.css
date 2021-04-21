@@ -2,6 +2,7 @@
 :root{
     --landing-light-gray: #fafafa;
     --landing-dark-gray: #f3f4f6;
+    --button-bg-color: #55acee;
 }
 
 * {
