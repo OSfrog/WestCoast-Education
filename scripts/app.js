@@ -1,5 +1,6 @@
 const mainContainer = document.querySelector('.main-container');
 const mainCenterContainer = document.querySelector('.main-center-container');
+const cartButtons = document.querySelectorAll('#cartButton');
 
 
 function getCourses() {
@@ -28,7 +29,7 @@ function getCourses() {
                         <p>Length: ${obj.length} weeks</p>
                         <p>\$${obj.price}</p>
                         </div>
-                    <button class="btn">Add To Cart</button>
+                    <button class="btn" id="cartButton">Add To Cart</button>
                 </div>
                 `);
             }
@@ -39,3 +40,4 @@ function getCourses() {
 }
 
 getCourses();
+

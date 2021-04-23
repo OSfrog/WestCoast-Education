@@ -28,6 +28,12 @@ saveButton.addEventListener('click', (e) => {
     });
 })
 
+document.addEventListener('click', (e) => {
+    if(e.target.id === 'cartButton') {
+        console.log(e.target.parentNode.children[1].innerText);
+    }
+})
+
 async function AddCourse() {
     
     
