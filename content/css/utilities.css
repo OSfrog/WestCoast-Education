@@ -1,6 +1,17 @@
 /* Buttons */
 
 .btn {
+  font-family: sans-serif;
+  padding: 0.6rem 0.5rem;
+  margin: 1rem auto;
+  text-decoration: none;
+  border-radius: 0.3125rem;
+  color: #fff;
+  background-color: var(--button-bg-color);
+  box-shadow: 0 0.3125rem 0 0 #3c93d5;
+}
+
+.card-btn {
   position: absolute;
   left: 0;
   right: 0;
@@ -15,12 +26,12 @@
   box-shadow: 0 0.3125rem 0 0 #3c93d5;
 }
 
-.btn:hover {
+.btn:hover, .card-btn:hover {
   background-color: #6fc6ff;
   cursor: pointer;
 }
 
-.btn:active {
+.btn:active, .card-btn:active {
   transform: translate(0, 0.3125rem);
   -webkit-transform: translate(0, 0.3125rem);
   box-shadow: 0 0.0625rem 0 0;
@@ -97,5 +108,17 @@
 }
 
 .close:hover {
+  cursor: pointer;
+}
+
+/* Cart */
+#cart {
+  font-size: 2rem;
+  color: var(--button-bg-color);
+}
+
+/* Icons */ 
+
+.fas {
   cursor: pointer;
 }

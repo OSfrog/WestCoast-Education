@@ -28,11 +28,15 @@ saveButton.addEventListener('click', (e) => {
     });
 })
 
+//Get the parent of the clicked element
 document.addEventListener('click', (e) => {
     if(e.target.id === 'cartButton') {
         console.log(e.target.parentNode.children[1].innerText);
     }
 })
+
+const cartButton = document.getElementById('#cartButton');
+console.log(cartButton);
 
 async function AddCourse() {
     

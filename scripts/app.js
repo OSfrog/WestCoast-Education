@@ -29,7 +29,7 @@ function getCourses() {
                         <p>Length: ${obj.length} weeks</p>
                         <p>\$${obj.price}</p>
                         </div>
-                    <button class="btn" id="cartButton">Add To Cart</button>
+                    <button class="card-btn" id="cartButton">Add To Cart</button>
                 </div>
                 `);
             }
