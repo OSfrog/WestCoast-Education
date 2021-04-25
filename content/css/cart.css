@@ -8,6 +8,7 @@
     top: 0;
     width: 21.875rem;
     height: 100%;
+    overflow-y: scroll;
     background-color: #fff;
     box-shadow: 0 0 2.25rem #04040445;
     z-index: 2;
@@ -45,13 +46,11 @@
 
 .cart-sidebar .cart-item .text {
     width: 80%;
-    padding: 0 1.25rem;
 }
-.cart-sidebar .cart-item .text span,
-.cart-sidebar .cart-item h5 {
-    font-size: 1.6rem;
-    font-weight: 500;
+.cart-sidebar .cart-item .text p {
     display: block;
+    font-size: 1.3rem;
+    font-weight: 500;
     margin-bottom: 0.3125rem;
 }
 
@@ -66,11 +65,22 @@
     top: 1rem;
 }
 
-.cart-sidebar h5 span.close {
-    position: relative;
-    top: 0;
-    right: 0;
-    left: 3.5rem;
+.cart-item h5 {
+    display: inline-block;
+    font-size: 1.6rem;
+    font-weight: 500;
+    margin-bottom: 0.3125rem;
+}
+
+.cart-item span.close {
+    display: inline-block;
+    position: static;
+    margin-left: 1.9rem;
+}
+
+.cart-item-top {
+    display: flex;
+    justify-content: space-around;
 }
 
 #totalAmount {

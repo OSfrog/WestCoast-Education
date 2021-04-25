@@ -82,13 +82,23 @@ document.addEventListener('click', (e) => {
                 shoppingCartItems.push(course);
                 
                 document.querySelector(`#course-${course.id}`).innerText = 
-                `${shoppingCartItems.filter(x => x === course).length}x`
+                `Quantity: ${shoppingCartItems.filter(x => x === course).length}x`
                 totalAmountValue += parseInt(course.price);
             }
         })
         cartButton.innerText = `${shoppingCartItems.length}`
         cartTitle.innerText = `Cart (${shoppingCartItems.length})`
         totalAmount.innerText = `Total Amount: $${totalAmountValue}`
+    } else if (e.target.classList.contains('remove-item')) {    //If user clicks remove button on cart item
+        const cartItemTitle = e.target.parentNode.children[0].innerText;
+        
+        for (let i = shoppingCartItems.length; i >= 0; --i) {
+            console.log(shoppingCartItems[i - 1].title);
+            if (shoppingCartItems[i - 1].title === cartItemTitle) {
+                shoppingCartItems.splice(i, 1);
+            }
+        }
+
         console.log(shoppingCartItems);
     }
 })
@@ -112,7 +122,8 @@ function createCheckoutInfo() {
     <div class="cart-item">
                 <h5 class="product-name">${course.title}</h5>
               <div class="text">
-                <span class="cart-quantity" id="course-${course.id}">${shoppingCartItems.filter(x => x === course).length}x <b>$${course.price}</b></span>
+                <p class="cart-quantity" id="course-${course.id}">Quantity: ${shoppingCartItems.filter(x => x === course).length}x</p>
+                <p>Price: $${course.price}</p>
               </div>
             </div>
     `);
@@ -138,13 +149,16 @@ function createCartItem(course) {
     cartBody.insertAdjacentHTML('beforeend',
         `
                 <div class="cart-item">
-                <h5 class="product-name">${course.title}<span class="close" id="removeItem${course.id}">&times;</span></h5>
+                <div class="cart-item-top">
+                <h5 class="product-name">${course.title}</h5>
+                <span class="close remove-item" id="removeItem${course.id}">&times;</span>
+                </div>
               <div class="img">
                 <img src=${course.image} alt="">
               </div>
               <div class="text">
-                <span class="cart-quantity" id="course-${course.id}">${shoppingCartItems.filter(x => x === course).length}x</span>
-                <h5 class="product-price">$${course.price}</h5>
+                <p class="cart-quantity" id="course-${course.id}">Quantity: ${shoppingCartItems.filter(x => x === course).length}x</p>
+                <p class="product-price">Price: $${course.price}</p>
               </div>
             </div>
                 `);
