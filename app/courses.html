@@ -30,7 +30,7 @@
       <nav>
         <a href="index.html" class="header-button">Home</a>
         <a href="courses.html" class="header-button">Courses</a>
-        <i class="fas fa-shopping-cart" id="cart"></i>
+        <i class="fas fa-shopping-cart" id="cart">0</i>
         <!-- <a href="about.html">About Us</a> -->
         <!-- <a href="contact.html">Contact</a> -->
       </nav>
@@ -41,20 +41,31 @@
       <div class="main-center-container">
         <h1 class="header-title">Courses <span class="far fa-file-alt" id="addCourse">+</span></h1>
         <div class="main-container"></div>
-        <!-- Modal -->
+        <!-- Modal Add Course -->
         <div class="modal-container hidden" id="addCourseModal">
           <div class="modal-content">
-            <h2>Add new course <span class="close">&times;</span></h2>
+            <h2>Add new course <span class="close" id="courseCloseModal">&times;</span></h2>
             <form>
               <input id="numberInput" type="number" placeholder="Course Number">
               <input id="titleInput" type="text" placeholder="Course Title">
               <input id="categoryInput" type="text" placeholder="Course Category">
               <textarea id="descriptionInput" type="text" rows="6" cols="17" id="description" name="description" placeholder="Description"></textarea>
-              <input id="lengthInput" type="text" placeholder="Course Length">
+              <input id="lengthInput" type="number" placeholder="Course Length">
               <input id="priceInput" type="number" placeholder="Price">
               <input id="imageInput" type="text" placeholder="Image URL">
-              <button id="save">Add Course</button>
+              <button class="btn" id="save">Add Course</button>
             </form>
+          </div>
+        </div>
+        <!-- Modal Checkout -->
+        <div class="modal-container hidden" id="checkoutModal">
+          <div class="modal-content" id="checkoutContentModal">
+            <h2>Thank you for your purchase <span class="close" id="checkoutCloseModal">&times;</span></h2>
+            <p>You bought: </p>
+            <div id="checkoutInfoModal"></div>
+            <div id="checkoutTotalModal">
+              Total: 
+              </div>
           </div>
         </div>
         <!-- Cart Sidebar -->
@@ -64,18 +75,9 @@
             <h4 id="cartTitleText">Cart (0)</h4>
           </div>
           <div class="cart-body">
-            <div class="cart-item">
-              <div class="img">
-                <img src="../content/images/greatstudents.jpg" alt="">
-              </div>
-              <div class="text">
-                <span class="cart-quantity">1x</span>
-                <h5 class="product-name">yeet</h5>
-                <h5 class="product-price"></h5>
-              </div>
-            </div>
-            <a href="" class="btn">Checkout</a>
           </div>
+          <div id="totalAmount">Total: $0</div>
+          <button id="checkoutButton" class="btn">Checkout</button>
         </div>
       </div>
     </main>

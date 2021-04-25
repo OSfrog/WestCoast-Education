@@ -1,6 +1,8 @@
 /* Cart */
 
 .cart-sidebar {
+    display: flex;
+    flex-direction: column;
     position: fixed;
     right: -25rem;
     top: 0;
@@ -8,12 +10,11 @@
     height: 100%;
     background-color: #fff;
     box-shadow: 0 0 2.25rem #04040445;
-    overflow-y: auto;
     z-index: 2;
     transition: all ease-in-out 300ms;
 }
 
-.cart-sidebar .cart-title h4 {
+.cart-title h4 {
     font-size: 1.5rem;
     font-weight: 500;
     text-align: center;
@@ -22,13 +23,16 @@
     border-bottom: 1px solid #dbdbdb;
 }
 
-.cart-sidebar .cart-body {
+.cart-body {
     padding: 1.875rem 0;
     display: flex;
     flex-direction: column;
+    min-height: 85%;
+    max-height: 85%;
+    overflow-y: scroll;
 }
 
-.cart-sidebar .cart-item {
+.cart-item {
     display: inline-block;
     width: 100%;
     margin-bottom: 1.25rem;
@@ -44,8 +48,8 @@
     padding: 0 1.25rem;
 }
 .cart-sidebar .cart-item .text span,
-.cart-sidebar .cart-item .text h5 {
-    font-size: 1rem;
+.cart-sidebar .cart-item h5 {
+    font-size: 1.6rem;
     font-weight: 500;
     display: block;
     margin-bottom: 0.3125rem;
@@ -60,4 +64,17 @@
     position: absolute;
     right: 1.25rem;
     top: 1rem;
+}
+
+.cart-sidebar h5 span.close {
+    position: relative;
+    top: 0;
+    right: 0;
+    left: 3.5rem;
+}
+
+#totalAmount {
+    font-size: 1.5rem;
+    text-align: center;
+    padding: 1rem;
 }

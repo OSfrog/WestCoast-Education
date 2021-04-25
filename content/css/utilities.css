@@ -80,6 +80,10 @@
   background-color: rgba(0, 0, 0, 0.4);
 }
 
+#checkoutModal .modal-content {
+  height: auto;
+}
+
 .modal-content {
   background-color: #fefefe;
   margin: 0 auto;
