@@ -2,7 +2,7 @@ const mainContainer = document.querySelector('.main-container');
 const mainCenterContainer = document.querySelector('.main-center-container');
 const cartButtons = document.querySelectorAll('#cartButton');
 
-
+const arrayOfCourseObject = [];
 function getCourses() {
     fetch('http://localhost:3000/courses')
         .then((response) => {
@@ -15,14 +15,14 @@ function getCourses() {
             mainContainer.innerHTML = '';
 
             for (let obj of data) {
-
+                arrayOfCourseObject.push(obj);
                 mainContainer.insertAdjacentHTML("beforeend",
                     `
-                <div class="card-container">
+                <div class="card-container" id=${'Id'+arrayOfCourseObject.length}">
                     <div class="card-image-container">
                     <img src="${obj.image}" />
                     </div>
-                    <div class="card-text-container">
+                    <div  class="card-text-container">
                         <h2>${obj.title}</h2>
                         <p>Category: ${obj.category}</p>
                         <p>${obj.description}</p>
@@ -38,6 +38,6 @@ function getCourses() {
             mainCenterContainer.innerHTML += `<p>${err}</p>`;
         })
 }
-
 getCourses();
+
 

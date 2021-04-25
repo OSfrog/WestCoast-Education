@@ -11,6 +11,7 @@ const lengthInput = document.querySelector('#lengthInput');
 const priceInput = document.querySelector('#priceInput');
 const imageInput = document.querySelector('#imageInput');
 const saveButton = document.querySelector('#save');
+const shoppingCartValues = [];
 
 addCoursesButton.addEventListener('click', () => {
     addCoursesModal.classList.remove('hidden');
@@ -33,6 +34,16 @@ document.addEventListener('click', (e) => {
     if(e.target.id === 'cartButton') {
         console.log(e.target.parentNode.children[1].innerText);
     }
+    if(e.target.id === 'cartButton') {
+        const banan = e.target.parentNode.children[1].innerText.split('\n');
+        const find = arrayOfCourseObject.find(function (post, index){
+            if (post.title === banan[0]) {
+
+                shoppingCartValues.push(post);
+            }
+    })
+    }
+   console.log(shoppingCartValues[0]);
 })
 
 const cartButton = document.getElementById('#cartButton');
