@@ -33,6 +33,7 @@ function getCourses() {
                 </div>
                 `);
             }
+            console.log(arrayOfCourseObject);
         })
         .catch((err) => {
             mainCenterContainer.innerHTML += `<p>${err}</p>`;
