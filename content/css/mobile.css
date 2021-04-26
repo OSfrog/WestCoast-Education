@@ -1,9 +1,5 @@
 /* Header*/
 
-header {
-    min-height: 10vh;
-}
-
 .header-box{
     flex-direction: column;
     justify-content: space-evenly;
@@ -15,6 +11,7 @@ header {
 
 h1.index-h1 {
     font-size: 1.5rem;
+    padding: 1rem;
 }
 
 /* nav */
@@ -78,13 +75,3 @@ width: 100%;
 .header-button {
     padding: 0.5rem 1rem;
 }
-
-/* @media screen and (max-width: 350px){
-    @media screen and (max-height: 800px){
-        .landing-container {
-            min-height: 95vh;
-            height: auto;
-        }
-    }
-  } */
-

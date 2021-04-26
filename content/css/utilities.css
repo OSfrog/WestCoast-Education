@@ -69,10 +69,8 @@
 
 .modal-container {
   position: fixed;
-  /* display: flex; */
-  /* justify-content: center; */
   align-items: center;
-  z-index: 1;
+  z-index: 7;
   left: 0;
   top: 0;
   width: 100%;
@@ -82,6 +80,8 @@
 
 #checkoutModal .modal-content {
   height: auto;
+  width: auto;
+  margin: 10rem;
 }
 
 .modal-content {
@@ -125,4 +125,13 @@
 
 .fas {
   cursor: pointer;
+}
+
+/* Mobile */
+
+@media screen and (max-width: 600px) {
+  #checkoutModal .modal-content {
+      width: auto;
+      margin: 4rem;
+  }
 }

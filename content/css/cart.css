@@ -11,7 +11,7 @@
     overflow-y: scroll;
     background-color: #fff;
     box-shadow: 0 0 2.25rem #04040445;
-    z-index: 2;
+    z-index: 6;
     transition: all ease-in-out 300ms;
 }
 
@@ -44,11 +44,11 @@
     width: 100%;
 }
 
-.cart-sidebar .cart-item .text {
+.cart-sidebar .cart-item .cart-text {
     width: 80%;
 }
-.cart-sidebar .cart-item .text p {
-    display: block;
+.cart-sidebar .cart-item .cart-text p {
+    display: inline-block;
     font-size: 1.3rem;
     font-weight: 500;
     margin-bottom: 0.3125rem;
@@ -83,8 +83,14 @@
     justify-content: space-around;
 }
 
+input.cart-item-quantity {
+    display: inline-block;
+    width: 20%;
+}
+
 #totalAmount {
     font-size: 1.5rem;
     text-align: center;
     padding: 1rem;
 }
+

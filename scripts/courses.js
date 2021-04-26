@@ -24,6 +24,11 @@ const totalAmount = document.querySelector('#totalAmount');
 const checkoutButton = document.querySelector('#checkoutButton');
 let shoppingCartItems = [];
 let totalAmountValue = 0;
+let totalQuantities = 0;
+
+if (document.readyState === 'loading') {
+    document.addEventListener('D')
+}
 
 addCourseButton.addEventListener('click', () => {
     addCourseModal.classList.remove('hidden');
@@ -41,7 +46,7 @@ courseCloseButton.addEventListener('click', () => {
 
 saveButton.addEventListener('click', (e) => {
     e.preventDefault();
-    AddCourse()
+    addCourse()
         .then(data => {
             // console.log(data);
         });
@@ -56,7 +61,7 @@ cartCloseButton.addEventListener('click', () => {
 })
 
 checkoutButton.addEventListener('click', () => {
-    if(shoppingCartItems.length < 1) return;
+    if (shoppingCartItems.length < 1) return;
 
     checkoutModal.classList.toggle('hidden');
 
@@ -65,49 +70,37 @@ checkoutButton.addEventListener('click', () => {
     ResetCart();
 })
 
-//Get the parent of the clicked element
-document.addEventListener('click', (e) => {
-    if (e.target.id === 'cartButton') {
-        const cardArray = e.target.parentNode.children[1].innerText.split('\n');
-        arrayOfCourseObjects.find(function (course) {
-            if (course.title === cardArray[0] 
-                && !shoppingCartItems.includes(course)) {
-
-                shoppingCartItems.push(course);
-                
-                createCartItem(course);
-                totalAmountValue += parseInt(course.price);
-            } else if (course.title === cardArray[0] &&
-                shoppingCartItems.includes(course)) {
-                shoppingCartItems.push(course);
-                
-                document.querySelector(`#course-${course.id}`).innerText = 
-                `Quantity: ${shoppingCartItems.filter(x => x === course).length}x`
-                totalAmountValue += parseInt(course.price);
-            }
-        })
-        cartButton.innerText = `${shoppingCartItems.length}`
-        cartTitle.innerText = `Cart (${shoppingCartItems.length})`
-        totalAmount.innerText = `Total Amount: $${totalAmountValue}`
-    } else if (e.target.classList.contains('remove-item')) {    //If user clicks remove button on cart item
-        const cartItemTitle = e.target.parentNode.children[0].innerText;
-        
-        for (let i = shoppingCartItems.length; i >= 0; --i) {
-            console.log(shoppingCartItems[i - 1].title);
-            if (shoppingCartItems[i - 1].title === cartItemTitle) {
-                shoppingCartItems.splice(i, 1);
-            }
-        }
-
-        console.log(shoppingCartItems);
-    }
-})
-
 document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
         addCourseModal.classList.add('hidden');
     }
 })
+
+function removeCartItem(course, e) {
+    const courseObject = (arrayOfCourseObjects.find(c => c === course));
+    const cartItemElement = e.target.parentNode.parentNode;
+
+    shoppingCartItems = shoppingCartItems.filter(course => course !== courseObject);
+    cartItemElement.remove();
+    updateCart();
+}
+
+function updateCart() {
+    const cartText = document.querySelectorAll('.cart-text');
+    totalQuantities = 0;
+    totalAmountValue = 0;
+    for (let item of cartText) {
+        const quantity = parseInt(item.children[1].value);
+        const price = parseInt(item.children[2].innerText.substr(8));
+        
+        totalQuantities += quantity;
+        totalAmountValue += price * quantity
+    }
+
+    cartButton.innerText = totalQuantities;
+    cartTitle.innerText = `Cart (${totalQuantities})`;
+    totalAmount.innerText = `Total Amount: $${totalAmountValue}`;
+}
 
 function resetCheckoutInfo() {
     checkoutInfoModal.innerHTML = ''
@@ -117,12 +110,13 @@ function createCheckoutInfo() {
     const filteredItems = arrayOfCourseObjects.filter(x => shoppingCartItems.includes(x));
 
     for (let course of filteredItems) {
+        const quantity = document.querySelector(`#courseQuantity${course.id}`).value;
         checkoutInfoModal.insertAdjacentHTML('beforeend',
             `
     <div class="cart-item">
                 <h5 class="product-name">${course.title}</h5>
               <div class="text">
-                <p class="cart-quantity" id="course-${course.id}">Quantity: ${shoppingCartItems.filter(x => x === course).length}x</p>
+                <p class="cart-quantity" id="course-${course.id}">Quantity: ${quantity}x</p>
                 <p>Price: $${course.price}</p>
               </div>
             </div>
@@ -156,15 +150,38 @@ function createCartItem(course) {
               <div class="img">
                 <img src=${course.image} alt="">
               </div>
-              <div class="text">
-                <p class="cart-quantity" id="course-${course.id}">Quantity: ${shoppingCartItems.filter(x => x === course).length}x</p>
+              <div class="cart-text">
+                <p class="cart-quantity" >Quantity: </p>
+                <input class="cart-item-quantity" id="courseQuantity${course.id}" type="number" min="1" value="1">
                 <p class="product-price">Price: $${course.price}</p>
               </div>
             </div>
                 `);
+
+                addEventListenerQuantity(course);
+                addEventListenerRemove(course);
 }
 
-async function AddCourse() {
+function addEventListenerRemove(course) {
+    const removeButton = document.querySelector(`#removeItem${course.id}`);
+    removeButton.addEventListener('click', (e) => {
+        removeCartItem(course, e);
+        updateCart();
+    })
+}
+
+function addEventListenerQuantity(course) {
+    const quantity = document.querySelector(`#courseQuantity${course.id}`);
+    quantity.addEventListener('change', (e) => {
+        const input = e.target;
+        if (isNaN(input.value) || input.value <= 0) {
+            input.value = 1;
+        }
+        updateCart();
+    });
+}
+
+async function addCourse() {
 
     const course = {
         courseNumber: numberInput.value,
@@ -177,10 +194,10 @@ async function AddCourse() {
     }
 
     for (let prop in course) {
-            if(course[`${prop}`] === '') {
-                alert('Fill out all fields before saving!');
-                return;
-            };
+        if (course[`${prop}`] === '') {
+            alert('Fill out all fields before saving!');
+            return;
+        };
     }
 
     const response = await fetch('http://localhost:3000/courses', {

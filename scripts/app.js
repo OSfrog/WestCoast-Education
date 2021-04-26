@@ -18,7 +18,7 @@ function getCourses() {
                 arrayOfCourseObjects.push(obj);
                 mainContainer.insertAdjacentHTML("beforeend",
                     `
-                <div class="card-container" id=${'Id'+arrayOfCourseObjects.length}">
+                <div class="card-container" id=${'Id' + arrayOfCourseObjects.length}">
                     <div class="card-image-container">
                     <img src="${obj.image}" />
                     </div>
@@ -29,11 +29,12 @@ function getCourses() {
                         <p>Length: ${obj.length} weeks</p>
                         <p>\$${obj.price}</p>
                         </div>
-                    <button class="card-btn" id="cartButton">Add To Cart</button>
+                    <button class="card-btn" id="cartButton${obj.id}">Add To Cart</button>
                 </div>
                 `);
+
+                AddEventListenerATCButton(obj);
             }
-            console.log(arrayOfCourseObjects);
         })
         .catch((err) => {
             mainCenterContainer.innerHTML += `<p>${err}</p>`;
@@ -41,4 +42,25 @@ function getCourses() {
 }
 getCourses();
 
+
+function AddEventListenerATCButton(obj) {
+    document.querySelector(`#cartButton${obj.id}`).addEventListener('click', (e) => {
+        const cardArray = e.target.parentNode.children[1].innerText.split('\n');
+        arrayOfCourseObjects.find(function (course) {
+            if (course.title === cardArray[0]
+                && !shoppingCartItems.includes(course)) {
+
+                shoppingCartItems.push(course);
+
+                createCartItem(course);
+            } else if (course.title === cardArray[0] &&
+                shoppingCartItems.includes(course)) {
+                shoppingCartItems.push(course);
+
+                document.querySelector(`#courseQuantity${course.id}`).value++;
+            }
+        });
+        updateCart();
+    });
+}
 
