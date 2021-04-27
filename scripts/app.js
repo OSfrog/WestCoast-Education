@@ -1,3 +1,4 @@
+'use strict';
 const mainContainer = document.querySelector('.main-container');
 const mainCenterContainer = document.querySelector('.main-center-container');
 const cartButtons = document.querySelectorAll('#cartButton');

@@ -59,6 +59,16 @@
       "category": "Programming",
       "image": "../content/images/greatstudents.jpg",
       "price": 1337
+    },
+    {
+      "courseNumber": "4324",
+      "title": "yeet",
+      "description": "t453",
+      "length": "234",
+      "category": "test",
+      "image": "../content/images/greatstudents.jpg",
+      "price": "23",
+      "id": 7
     }
   ]
 }
