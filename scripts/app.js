@@ -3,7 +3,7 @@ const mainContainer = document.querySelector('.main-container');
 const mainCenterContainer = document.querySelector('.main-center-container');
 const cartButtons = document.querySelectorAll('#cartButton');
 
-const arrayOfCourseObjects = [];
+let arrayOfCourseObjects = [];
 function getCourses() {
     fetch('http://localhost:3000/courses')
         .then((response) => {
@@ -14,9 +14,8 @@ function getCourses() {
         })
         .then(data => {
             mainContainer.innerHTML = '';
-
+            arrayOfCourseObjects = data;
             for (let obj of data) {
-                arrayOfCourseObjects.push(obj);
                 mainContainer.insertAdjacentHTML("beforeend",
                     `
                 <div class="card-container" id=${'Id' + arrayOfCourseObjects.length}">
@@ -43,25 +42,23 @@ function getCourses() {
 }
 getCourses();
 
-
 function AddEventListenerATCButton(obj) {
     document.querySelector(`#cartButton${obj.id}`).addEventListener('click', (e) => {
         const cardArray = e.target.parentNode.children[1].innerText.split('\n');
         arrayOfCourseObjects.find(function (course) {
             if (course.title === cardArray[0]
-                && !shoppingCartItems.includes(course)) {
+                && !ShoppingCart.shoppingCartItems.includes(course)) {
 
-                shoppingCartItems.push(course);
+                ShoppingCart.shoppingCartItems.push(course);
 
-                createCartItem(course);
+                ShoppingCart.createCartItem(course);
             } else if (course.title === cardArray[0] &&
-                shoppingCartItems.includes(course)) {
-                shoppingCartItems.push(course);
+                ShoppingCart.shoppingCartItems.includes(course)) {
+                ShoppingCart.shoppingCartItems.push(course);
 
                 document.querySelector(`#courseQuantity${course.id}`).value++;
             }
         });
-        updateCart();
+        ShoppingCart.updateCart();
     });
 }
-
