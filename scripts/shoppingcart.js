@@ -19,25 +19,24 @@ class ShoppingCart {
     static totalAmountValue = 0;
     static totalQuantities = 0;
 
-    static removeCartItem(course, e) {
-        const courseObject = (arrayOfCourseObjects.find(c => c === course));
+
+    static removeCartItem(cartItem, e) {
         const cartItemElement = e.target.parentNode.parentNode;
 
-        this.shoppingCartItems = this.shoppingCartItems.filter(course => course !== courseObject);
+        this.shoppingCartItems = this.shoppingCartItems.filter(item => item !== cartItem);
         cartItemElement.remove();
         this.updateCart();
     }
 
     static updateCart() {
-        const cartText = document.querySelectorAll('.cart-text');
-        this.totalQuantities = 0;
         this.totalAmountValue = 0;
-        for (let item of cartText) {
-            const quantity = parseInt(item.children[1].value);
-            const price = parseInt(item.children[2].innerText.substr(8));
+        this.totalQuantities = 0;
 
-            this.totalQuantities += quantity;
-            this.totalAmountValue += price * quantity
+        for (let item of this.shoppingCartItems) {
+            this.totalQuantities += item.quantity;
+            this.totalAmountValue += item.calcTotalPrice();
+
+            document.querySelector(`#courseQuantity${item.courseId}`).value = item.quantity;
         }
 
         cartButton.innerText = this.totalQuantities;
@@ -50,17 +49,14 @@ class ShoppingCart {
     }
 
     static createCheckoutInfo() {
-        const filteredItems = arrayOfCourseObjects.filter(x => this.shoppingCartItems.includes(x));
-
-        for (let course of filteredItems) {
-            const quantity = document.querySelector(`#courseQuantity${course.id}`).value;
+        for (let course of this.shoppingCartItems) {
             checkoutInfoModal.insertAdjacentHTML('beforeend',
                 `
         <div class="cart-item">
-                    <h5 class="product-name">${course.title}</h5>
+                    <h5 class="product-name">${course.name}</h5>
                   <div class="text">
-                    <p class="cart-quantity" id="course-${course.id}">Quantity: ${quantity}x</p>
-                    <p>Price: $${course.price}</p>
+                    <p class="cart-quantity" id="course-${course.id}">Quantity: ${course.quantity}x</p>
+                    <p>Unit Price: $${course.unitPrice}</p>
                   </div>
                 </div>
         `);
@@ -73,7 +69,7 @@ class ShoppingCart {
         cartSideBar.style.right = "-25rem";
     }
 
-    static ResetCart() {
+    static resetCart() {
         this.shoppingCartItems = [];
         this.totalAmountValue = 0;
         cartBody.innerHTML = '';
@@ -82,46 +78,52 @@ class ShoppingCart {
         cartTitle.innerHTML = 'Cart (0)';
     }
 
-    static createCartItem(course) {
+    static createCartItemHTML(cartItem) {
         cartBody.insertAdjacentHTML('beforeend',
             `
                     <div class="cart-item">
                     <div class="cart-item-top">
-                    <h5 class="product-name">${course.title}</h5>
-                    <span class="close remove-item" id="removeItem${course.id}">&times;</span>
+                    <h5 class="product-name">${cartItem.name}</h5>
+                    <span class="close remove-item" id="removeItem${cartItem.courseId}">&times;</span>
                     </div>
                   <div class="img">
-                    <img src=${course.image} alt="">
+                    <img src=${cartItem.imageSrc} alt="">
                   </div>
                   <div class="cart-text">
                     <p class="cart-quantity" >Quantity: </p>
-                    <input class="cart-item-quantity" id="courseQuantity${course.id}" type="number" min="1" value="1">
-                    <p class="product-price">Price: $${course.price}</p>
+                    <input class="cart-item-quantity" id="courseQuantity${cartItem.courseId}" type="number" min="1" value="${cartItem.quantity}">
+                    <p class="product-price">Price: $${cartItem.unitPrice}</p>
                   </div>
                 </div>
                     `);
 
-        this.addEventListenerQuantity(course);
-        this.addEventListenerRemove(course);
+        this.addEventListenerQuantity(cartItem);
+        this.addEventListenerRemove(cartItem);
     }
 
-    static addEventListenerRemove(course) {
-        const removeButton = document.querySelector(`#removeItem${course.id}`);
+    static addEventListenerRemove(cartItem) {
+        const removeButton = document.querySelector(`#removeItem${cartItem.courseId}`);
         removeButton.addEventListener('click', (e) => {
-            this.removeCartItem(course, e);
+            this.removeCartItem(cartItem, e);
             this.updateCart();
         })
     }
 
-    static addEventListenerQuantity(course) {
-        const quantity = document.querySelector(`#courseQuantity${course.id}`);
+    static addEventListenerQuantity(cartItem) {
+        const quantity = document.querySelector(`#courseQuantity${cartItem.courseId}`);
         quantity.addEventListener('change', (e) => {
             const input = e.target;
             if (isNaN(input.value) || input.value <= 0) {
-                input.value = 1;
+                cartItem.quantity = 1;
+            } else {
+                cartItem.changeQuantity(parseInt(input.value));
             }
             this.updateCart();
         });
+    }
+
+    static addToCart(cartItem) {
+        this.shoppingCartItems.push(cartItem);
     }
 
 }
@@ -147,7 +149,7 @@ checkoutButton.addEventListener('click', () => {
 
     ShoppingCart.createCheckoutInfo();
     ShoppingCart.closeCartSideBar();
-    ShoppingCart.ResetCart();
+    ShoppingCart.resetCart();
 })
 
 

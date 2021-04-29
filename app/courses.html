@@ -22,12 +22,12 @@
     />
     <script src="../scripts/app.js" defer></script>
     <script src="../scripts/courses.js" defer></script>
-    <script src="../scripts/shoppingcarttest.js" defer></script>
+    <script src="../scripts/shoppingcart.js" defer></script>
     <script src="../scripts/cart-item.js" defer></script>
   </head>
   <header>
     <div class="header-box">
-      <h1 class="index-h1">WestCoast Education</h1>
+      <a href="index.html"><h1 class="index-h1">WestCoast Education</h1></a>
       <nav>
         <a href="index.html" class="header-button">Home</a>
         <a href="courses.html" class="header-button">Courses</a>
@@ -61,8 +61,9 @@
         <!-- Modal Checkout -->
         <div class="modal-container hidden" id="checkoutModal">
           <div class="modal-content" id="checkoutContentModal">
-            <h2>Thank you for your purchase <span class="close" id="checkoutCloseModal">&times;</span></h2>
-            <p>You bought: </p>
+            <h2>Thank you for your purchase! <span class="close" id="checkoutCloseModal">&times;</span></h2>
+            <hr>
+            <h2>You bought: </h2>
             <div id="checkoutInfoModal"></div>
             <div id="checkoutTotalModal">
               Total: 

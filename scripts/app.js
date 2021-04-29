@@ -44,22 +44,25 @@ getCourses();
 
 function AddEventListenerATCButton(obj) {
     document.querySelector(`#cartButton${obj.id}`).addEventListener('click', (e) => {
-        const cardArray = e.target.parentNode.children[1].innerText.split('\n');
+        const courseTitle = e.target.parentNode.children[1].innerText.split('\n')[0];
+        let selectedCourse = {}
         arrayOfCourseObjects.find(function (course) {
-            if (course.title === cardArray[0]
-                && !ShoppingCart.shoppingCartItems.includes(course)) {
-
-                ShoppingCart.addToCart(new CartItem(course));
-
-                ShoppingCart.createCartItem(course);
-            } else if (course.title === cardArray[0] &&
-                ShoppingCart.shoppingCartItems.includes(course)) {
-                ShoppingCart.addToCart(course);
-
-                document.querySelector(`#courseQuantity${course.id}`).value++;
+            if (course.title === courseTitle) {
+                selectedCourse = course;
             }
         });
+
+        const cartItem = ShoppingCart.shoppingCartItems.find(course => course.name === courseTitle);
+
+        if (cartItem !== undefined){
+            cartItem.addQuantity();
+
+        } else {
+            const cartItem = new CartItem(selectedCourse)
+            ShoppingCart.addToCart(cartItem);
+            ShoppingCart.createCartItemHTML(cartItem);
+        }
         ShoppingCart.updateCart();
-        console.log(ShoppingCart.shoppingCartItems);
     });
 }
+

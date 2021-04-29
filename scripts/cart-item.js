@@ -2,9 +2,9 @@
 
 class CartItem {
     constructor(course){
-        this.course = course;
+        this.courseId = course.id;
         this.name = course.title;
-        this.unitPrice = course.price;
+        this.unitPrice = parseInt(course.price);
         this.imageSrc = course.image;
         this.quantity = 1;
         this.totalPrice = 0;
@@ -14,7 +14,11 @@ class CartItem {
         value > 0 ? this.quantity = value : this.quantity = 1;
     }
 
+    addQuantity(){
+        this.quantity++;
+    }
+
     calcTotalPrice(){
-        this.totalPrice = this.quantity * this.unitPrice;
+        return this.totalPrice = this.quantity * this.unitPrice;
     }
 }

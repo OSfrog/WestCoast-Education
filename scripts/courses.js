@@ -27,8 +27,9 @@ document.addEventListener('keydown', (e) => {
 })
 
 saveButton.addEventListener('click', (e) => {
-    e.preventDefault();
     addCourse();
+    e.preventDefault();
+    return false;
 });
 
 async function addCourse() {
