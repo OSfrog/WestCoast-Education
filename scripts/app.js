@@ -18,7 +18,7 @@ function getCourses() {
             for (let obj of data) {
                 mainContainer.insertAdjacentHTML("beforeend",
                     `
-                <div class="card-container" id=${'Id' + arrayOfCourseObjects.length}">
+                <div class="card-container">
                     <div class="card-image-container">
                     <img src="${obj.image}" />
                     </div>
@@ -49,16 +49,17 @@ function AddEventListenerATCButton(obj) {
             if (course.title === cardArray[0]
                 && !ShoppingCart.shoppingCartItems.includes(course)) {
 
-                ShoppingCart.shoppingCartItems.push(course);
+                ShoppingCart.addToCart(new CartItem(course));
 
                 ShoppingCart.createCartItem(course);
             } else if (course.title === cardArray[0] &&
                 ShoppingCart.shoppingCartItems.includes(course)) {
-                ShoppingCart.shoppingCartItems.push(course);
+                ShoppingCart.addToCart(course);
 
                 document.querySelector(`#courseQuantity${course.id}`).value++;
             }
         });
         ShoppingCart.updateCart();
+        console.log(ShoppingCart.shoppingCartItems);
     });
 }

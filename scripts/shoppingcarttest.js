@@ -19,6 +19,7 @@ class ShoppingCart {
     static totalAmountValue = 0;
     static totalQuantities = 0;
 
+
     static removeCartItem(course, e) {
         const courseObject = (arrayOfCourseObjects.find(c => c === course));
         const cartItemElement = e.target.parentNode.parentNode;
@@ -73,7 +74,7 @@ class ShoppingCart {
         cartSideBar.style.right = "-25rem";
     }
 
-    static ResetCart() {
+    static resetCart() {
         this.shoppingCartItems = [];
         this.totalAmountValue = 0;
         cartBody.innerHTML = '';
@@ -124,6 +125,10 @@ class ShoppingCart {
         });
     }
 
+    static addToCart(course){
+        this.shoppingCartItems.push(course);
+    }
+
 }
 
 checkoutCloseButton.addEventListener('click', () => {
@@ -147,7 +152,7 @@ checkoutButton.addEventListener('click', () => {
 
     ShoppingCart.createCheckoutInfo();
     ShoppingCart.closeCartSideBar();
-    ShoppingCart.ResetCart();
+    ShoppingCart.resetCart();
 })
 
 
