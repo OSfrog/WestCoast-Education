@@ -24,7 +24,7 @@ document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
         addCourseModal.classList.add('hidden');
     }
-})
+});
 
 saveButton.addEventListener('click', (e) => {
     addCourse();
